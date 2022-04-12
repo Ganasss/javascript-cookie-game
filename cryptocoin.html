@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        .dogedoge {
+            opacity: 80%;
+            transition: transform .2s;
+        }
+
+        .dogedoge:hover {
+            opacity: 90%;
+            transform: scale(1.1);
+        }
+
+        .dogedoge:active {
+            opacity: 100%;
+        }
+
+        .eth {
+            visibility: hidden;
+        }
+    </style>
+
+    <title>Crypto Coin Clicker</title>
+</head>
+
+<body style="background-color: whitesmoke;">
+
+
+
+
+    <div class="container pt-5" id="alertx">
+        <div class="">
+
+        </div>
+    </div>
+
+
+    <div class="container pt-5 bg-black rounded">
+        <div class="">
+            <div style="font-family: Century Gothic; color: white;">
+                <center>
+                    <br>
+                    <h1 style="font-weight: bold">↓ Crypto Clicker ↓</h1>
+                    <h2 id="number">You have earned 0 coins</h2>
+                    <br>
+
+                    <img src="https://www.pngall.com/wp-content/uploads/10/Dogecoin-Crypto-Logo-PNG-Cutout.png"
+                        height="150px" type="button" onclick="moneyIncrement()" class="dogedoge" id="cryptocoin">
+
+
+                    <br>
+
+                    <br>
+                    <h3 id="autodisplay">Passive Coin: <strong>0</strong></h3>
+                    <h3 id="clickdisplay">Clicking Power: <strong>1</strong></h3>
+                    <strong>
+                        <input type="button" value="Purchase Coin Upgrade (20)" id="clickPower"
+                            onclick="clickingPower()" class="btn btn-primary" style="font-weight: bold;">
+
+                        <input type="button" value="Purchase Passive Coin (30)" id="auto" onclick="autoIncrement()"
+                            class="btn btn-secondary" style="font-weight: bold;">
+                        <br>
+                        <br>
+                        <input type="button" value="Purchase Ethereum Coin (100)" id="eth" onclick="ethCoin()"
+                            class="btn btn-secondary" style="font-weight: bold;">
+
+                        <input type="button" value="Purchase Bitcoin (500)" id="btc" onclick="btcCoin()"
+                            class="btn btn-secondary" style="font-weight: bold;">
+                        <br>
+                        <br>
+
+                    </strong>
+            </div>
+
+
+
+            </center>
+        </div>
+    </div>
+
+
+    <div class="container pt-5" style="font-family: Century Gothic;">
+        <h1 style="font-weight: bold;">How To Play</h1>
+        <p>Welcome to crypto clickers! This game is inspired by the browser game "Cookie Clicker". Where your goal is to
+            get as much crypto coin as possible by clicking the coin image. You can upgrade your clicking power,
+            purchase passive income coins, and even upgrade your coin level!</p>
+
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+
+        var money = 0
+        var clickValue = 1
+        var autoValue = 0
+        var toggle = 0
+        var used = 0
+        var asd = 1
+
+
+        clickPowerPrice = 20
+        autoPrice = 30
+        ethCoinPrice = 100
+        btcCoinPrice = 500
+
+        function autoIncrement() {
+            if (money >= autoPrice) {
+                money = money - autoPrice
+                autoValue = autoValue + 1
+                used += 1
+                document.getElementById("number").innerHTML = "You have earned: <strong>" + money + "</strong> coins!"
+                document.getElementById("autodisplay").innerHTML = "Passive Coin: <strong>" + autoValue + "</strong>"
+            } else {
+                document.getElementById("alertx").innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>NOT ENOUGH COINS!</strong> The price of passive coin costs 30.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`
+            }
+        }
+
+
+        function clickingPower() {
+            if (money >= clickPowerPrice) {
+                money = money - clickPowerPrice
+                clickValue = clickValue + 1
+                document.getElementById("clickdisplay").innerHTML = "Clicking Power: <strong>" + clickValue + "</strong>"
+            } else {
+                document.getElementById("alertx").innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>NOT ENOUGH COINS!</strong> The price of coin upgrade costs 20.<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`
+            }
+        }
+
+        function ethCoin() {
+            if (money >= ethCoinPrice) {
+                bought = console.log("Bought ETH coin")
+                money = money - ethCoinPrice
+                document.getElementById("cryptocoin").src = "https://blogger.googleusercontent.com/img/a/AVvXsEh59sc_1YtijdYM9Eui6W8gtmknXsVG3kN0llbAHrLt0o5PcaBW3ouXGJbTvQfNRrc6Re3LmyD95M6dLOJc7vP7781meM2XDsd3Vk83MZ3LVK2PC1Nll4hmPmcn3e8Y-RvwNTaxhKK4GLwyUHBP5oxIdxvByZyTdAxWhIuISQdBeBLE9B8JMWQp2M9M=w0"
+                clickValue = clickValue + 10
+                document.getElementById("clickdisplay").innerHTML = "Clicking Power: <strong>" + clickValue + "</strong>"
+                document.getElementById("eth").style.display = "none"
+            }
+        }
+
+        function btcCoin() {
+            if (money >= btcCoinPrice) {
+                bought = console.log("Bought BTC coin")
+                money = money - btcCoinPrice
+                document.getElementById("cryptocoin").src = "https://cdn-icons-png.flaticon.com/512/1490/1490849.png"
+                clickValue = clickValue + 55
+                document.getElementById("clickdisplay").innerHTML = "Clicking Power: <strong>" + clickValue + "</strong>"
+                document.getElementById("btc").style.display = "none"
+            }
+        }
+
+        if (toggle == 0) {
+            toggle++
+
+            setInterval(function () {
+                money = money + autoValue
+                document.getElementById("number").innerHTML = "You have earned: <strong>" + money + "</strong> coins!"
+                document.getElementById("auto").innerHTML = "Purchase Passive Coin (" + autoPrice + ")"
+
+            }, 1000);
+        }
+
+
+        function moneyIncrement() {
+            money = money + clickValue
+            document.getElementById("number").innerHTML = "You have earned: <strong>" + money + "</strong> coins!"
+            document.getElementById("autodisplay").innerHTML = "Passive Coin: <strong>" + autoValue + "</strong>"
+            document.getElementById("auto").innerHTML = "Purchase Passive Coin (" + autoPrice + ")"
+        }
+
+
+        $(document).ready(function () {
+            initializeGame()
+        })
+
+        $(document).ready(function () {
+            initializeGame2()
+        })
+
+        function initializeGame() {
+            setInterval(function () {
+                if (money >= 30) {
+                    document.getElementById("auto").style.display = $('#auto').removeClass('btn btn-secondary').addClass('btn btn-primary')
+                } else {
+                    document.getElementById("auto").style.display = $('#auto').addClass('btn btn-secondary')
+
+
+                } if (money >= clickPowerPrice) {
+                    document.getElementById("clickPower").style.display = $('#clickPower').removeClass('btn btn-secondary').addClass('btn btn-primary')
+                } else {
+                    document.getElementById("clickPower").style.display = $('#clickPower').removeClass('btn btn-secondary').addClass('btn btn-secondary')
+
+
+                } if (money >= ethCoinPrice) {
+                    document.getElementById("eth").style.display = $('#eth').removeClass('btn btn-secondary').addClass('btn btn-info')
+
+                } if (money >= btcCoinPrice) {
+                    document.getElementById("btc").style.display = $('#btc').removeClass('btn btn-secondary').addClass('btn btn-warning')
+                }
+            }, 100);
+
+            function initializeGame2() {
+                setInterval(function () {
+                }, 100);
+            }
+        }
+    </script>
+
+
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
